@@ -17,8 +17,14 @@ public class TenantFilter extends OncePerRequestFilter {
     throws ServletException, IOException {
 
         String tenantId = request.getHeader("X-Tenant-ID");
-        if (tenantId != null && !tenantId.isEmpty()) {
-            TenantContext.setTenantId(tenantId);
+        if (tenantId != null && !tenantId.trim().isEmpty()) {
+            // Basic validation: alphanumeric characters, hyphens, underscores only
+            if (tenantId.matches("^[a-zA-Z0-9_-]+$") && tenantId.length() <= 50) {
+                TenantContext.setTenantId(tenantId);
+            } else {
+                // Log invalid tenant ID attempt for security monitoring
+                // Could also return 400 Bad Request or use default tenant
+            }
         }
 
         try {
