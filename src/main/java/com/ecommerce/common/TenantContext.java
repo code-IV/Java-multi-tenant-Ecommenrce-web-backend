@@ -1,4 +1,4 @@
-package com.example.ecommerce.common;
+package com.ecommerce.common;
 
 public class TenantContext {
     private static final ThreadLocal<String> currentTenant = new ThreadLocal<>();

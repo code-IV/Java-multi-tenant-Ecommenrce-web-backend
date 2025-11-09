@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94SVN scan initiated Wed Oct 15 13:57:30 2025 as: nmap -sn -oA host -PE -&#45;packet-trace -&#45;disable-arp-ping 10.232.94.111 -->
+<nmaprun scanner="nmap" args="nmap -sn -oA host -PE -&#45;packet-trace -&#45;disable-arp-ping 10.232.94.111" start="1760525850" startstr="Wed Oct 15 13:57:30 2025" version="7.94SVN" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="echo-reply" reason_ttl="64"/>
+<address addr="10.232.94.111" addrtype="ipv4"/>
+<address addr="2A:BE:54:7D:FE:75" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="20594" rttvar="20594" to="102970"/>
+</host>
+<runstats><finished time="1760525850" timestr="Wed Oct 15 13:57:30 2025" summary="Nmap done at Wed Oct 15 13:57:30 2025; 1 IP address (1 host up) scanned in 0.10 seconds" elapsed="0.10" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

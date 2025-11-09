@@ -1,0 +1,99 @@
+🔐 Security
+
+Environment variables:
+
+Never commit secrets (DB URL, JWT secret, API keys).
+
+Use .env + your deployment platform’s secret manager.
+
+HTTPS everywhere:
+
+TLS certs via Let’s Encrypt (if self-hosting) or managed by your provider.
+
+Auth & sessions:
+
+Strong JWT secret or session key.
+
+Token expiration & refresh flow.
+
+Rate limiting on login/registration endpoints.
+
+CORS:
+
+Only allow your Next.js domain, not *.
+
+Password handling:
+
+Hash (bcrypt/argon2), never store raw.
+
+🗄️ Database & Persistence
+
+Use a managed DB if possible (Postgres/MySQL).
+
+Run migrations before production (Alembic if SQLAlchemy).
+
+Backup strategy (daily dump or provider backups).
+
+Connection pooling (e.g., asyncpg + pgBouncer if traffic grows).
+
+🖼️ Media Handling
+
+Move /uploads to object storage + CDN (as we said).
+
+Ensure file validation (MIME type, size limit).
+
+Prevent path traversal (../../etc/passwd attacks).
+
+Consider expiration or signed URLs for private files.
+
+⚡ Performance
+
+Next.js:
+
+Use next/image for optimized images.
+
+Pre-render static pages where possible (SSG/ISR).
+
+FastAPI:
+
+Enable Uvicorn/Gunicorn workers in production.
+
+Caching layer (Redis) if needed for categories/articles.
+
+CDN for static assets + media.
+
+🧑‍💻 Deployment Architecture
+
+Stateless backend (no local /uploads).
+
+Run services in Docker containers (recommended).
+
+Separate concerns:
+
+frontend (Next.js, maybe on Vercel/Netlify)
+
+backend (FastAPI, on server/container host)
+
+database (managed service)
+
+storage (S3/CDN)
+
+🧩 Monitoring & Logging
+
+Structured logs (JSON) → store in a log service (e.g., Loki, ELK, provider logs).
+
+Error tracking (Sentry is popular with FastAPI + Next.js).
+
+Health checks endpoint in FastAPI.
+
+🔄 CI/CD & Testing
+
+Automated tests for CRUD & auth before deploying.
+
+Linting/type checking (mypy, ESLint).
+
+CI pipeline:
+
+run tests → build Docker images → deploy.
+
+✅ Checklist before first deploy:
